@@ -14,6 +14,28 @@ public class ClienteServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
+	public ClienteServlet() {
+		System.out.println("Construindo Servlet...");
+	}
+	
+	@Override
+	public void init() throws ServletException {
+		System.out.println("Inicializando Servlet");
+		super.init();
+	}
+	
+	/**
+	 * Recebe em primeiro lugar os objetos 
+	 * HttpServletRequest e HttpServletResponse
+	 * e partir dai decide se vai para o doGet,
+	 * doPost etc...
+	 */
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("Chamando o service");
+		super.service(req, resp);
+	}
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
@@ -54,6 +76,12 @@ public class ClienteServlet extends HttpServlet {
 		PrintWriter writer = response.getWriter();
 		writer.print("Chamou pelo método PUT");
 		
+	}
+	
+	@Override
+	public void destroy() {
+		System.out.println("Servlet está sendo destruido");
+		super.destroy();
 	}
 	
 }
