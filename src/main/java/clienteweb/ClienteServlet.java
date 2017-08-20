@@ -48,11 +48,13 @@ public class ClienteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		String nome = request.getParameter("nome");
+		
 		// permite montar e imprimir alguma informação no cliente
 		response.setCharacterEncoding("UTF-8");
 		
 		PrintWriter writer = response.getWriter();
-		writer.print("Chamou pelo método POST");
+		writer.print("Chamou pelo método POST enviando nome " + nome + "!");
 		
 	}
 	
